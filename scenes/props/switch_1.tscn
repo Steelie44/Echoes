@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://behaqdigifyka"]
+
+[ext_resource type="Script" uid="uid://bpl5spnpq782w" path="res://scripts/props/switch_1.gd" id="1_71jaa"]
+[ext_resource type="Texture2D" uid="uid://vr6yeqll54u8" path="res://assets/props/switch_red.png" id="1_s53kx"]
+[ext_resource type="Texture2D" uid="uid://bucvahetu7i56" path="res://assets/props/switch_green.png" id="2_0otdo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sfe85"]
+size = Vector2(28, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_11718"]
+size = Vector2(81, 32)
+
+[node name="Switch_1" type="Area2D" unique_id=1540902422 groups=["Interactable"]]
+script = ExtResource("1_71jaa")
+
+[node name="Green" type="Sprite2D" parent="." unique_id=419428996]
+texture = ExtResource("2_0otdo")
+
+[node name="Red" type="Sprite2D" parent="." unique_id=715453161]
+texture = ExtResource("1_s53kx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=596182955]
+visible = false
+shape = SubResource("RectangleShape2D_sfe85")
+
+[node name="switch" type="Area2D" parent="." unique_id=104959178]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="switch" unique_id=694697773]
+visible = false
+position = Vector2(1.5, 0)
+shape = SubResource("RectangleShape2D_11718")
+debug_color = Color(0.77884656, 0.4386388, 0, 0.41960785)

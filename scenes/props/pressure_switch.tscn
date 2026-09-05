@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://drnlhecqib5nu"]
+
+[ext_resource type="Texture2D" uid="uid://c55tgkss8eohe" path="res://assets/props/pressure_switch_on.png" id="1_0n0pk"]
+[ext_resource type="Texture2D" uid="uid://grkr60h5lf02" path="res://assets/props/pressure_switch_off.png" id="2_fgalv"]
+[ext_resource type="Script" uid="uid://sajjaqk7qcj2" path="res://scenes/props/detection_zone.gd" id="3_fgalv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sfe85"]
+size = Vector2(32, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_11718"]
+size = Vector2(32, 16)
+
+[node name="PressureSwitch" type="StaticBody2D" unique_id=1876005653]
+script = ExtResource("3_fgalv")
+
+[node name="on" type="Sprite2D" parent="." unique_id=2110608546]
+texture = ExtResource("1_0n0pk")
+
+[node name="off" type="Sprite2D" parent="." unique_id=1562960754]
+texture = ExtResource("2_fgalv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1000088817]
+visible = false
+position = Vector2(0, 12.5)
+shape = SubResource("RectangleShape2D_sfe85")
+
+[node name="DetectionZone" type="Area2D" parent="." unique_id=1041575020]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionZone" unique_id=790145536]
+visible = false
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_11718")

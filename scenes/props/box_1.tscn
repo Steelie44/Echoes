@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://fe7aj3vkinc5"]
+
+[ext_resource type="Script" uid="uid://bidnob3o4lht" path="res://scripts/props/box_1.gd" id="1_bbg30"]
+[ext_resource type="Texture2D" uid="uid://ct1cdvhli7rrw" path="res://assets/props/box_1.png" id="1_xx8fl"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bbg30"]
+friction = 0.2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v7u6g"]
+size = Vector2(63, 62)
+
+[node name="Box_1" type="RigidBody2D" unique_id=329115413 groups=["Pushable"]]
+mass = 2.0
+physics_material_override = SubResource("PhysicsMaterial_bbg30")
+gravity_scale = 0.5
+linear_damp = 1.0
+script = ExtResource("1_bbg30")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1255441242]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("1_xx8fl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1538389935]
+visible = false
+position = Vector2(0.5, 0)
+scale = Vector2(0.9, 0.9)
+shape = SubResource("RectangleShape2D_v7u6g")
