@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ymq4b4fbbk1o" path="res://assets/props/teleport inactivated.png" id="1_p58te"]
 [ext_resource type="Texture2D" uid="uid://dsb3upplm5cfe" path="res://assets/props/teleport.png" id="2_121pt"]
+[ext_resource type="Script" path="res://scripts/props/portal.gd" id="3_portal"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fwv1f"]
 atlas = ExtResource("1_p58te")
@@ -160,6 +161,7 @@ animations = [{
 radius = 31.0
 
 [node name="Portal" type="Node2D" unique_id=363754059]
+script = ExtResource("3_portal")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1966519694]
 sprite_frames = SubResource("SpriteFrames_sfe85")
@@ -169,6 +171,5 @@ frame_progress = 1.0
 
 [node name="portal_area" type="Area2D" parent="." unique_id=1358969021]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="portal_area" unique_id=1548014073]
-visible = false
+[node name="portal_area" type="CollisionShape2D" parent="portal_area" unique_id=1548014073]
 shape = SubResource("CircleShape2D_sfe85")

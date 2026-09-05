@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://x2ifw8ylaejn"]
+
+[ext_resource type="Script" uid="uid://dv1v6hwgj6c2d" path="res://scripts/ui/title_screen.gd" id="1_skoes"]
+[ext_resource type="Texture2D" uid="uid://6yrtfqm0c5qo" path="res://ui/titlescreen/background_vignette.png" id="1_ux371"]
+[ext_resource type="Texture2D" uid="uid://dxty8s7kyb85y" path="res://ui/titlescreen/echoes_logo_white.png" id="2_2e2ej"]
+[ext_resource type="Shader" uid="uid://ib7uo18p16gs" path="res://ui/titlescreen/title_glow.gdshader" id="2_skoes"]
+[ext_resource type="FontFile" uid="uid://dum1kemdaimgq" path="res://ui/titlescreen/Jost-VariableFont_wght.ttf" id="4_2e2ej"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ux371"]
+shader = ExtResource("2_skoes")
+shader_parameter/pulse_color = Color(0.12892339, 0.53114736, 0.3375284, 1)
+shader_parameter/pulse_speed = 0.80000001192096
+shader_parameter/min_brightness = 0.35000000521542
+shader_parameter/pulse_strength = 1.0000000149012
+
+[sub_resource type="AudioStreamWAV" id="AudioStreamWAV_skoes"]
+
+[sub_resource type="AudioStreamWAV" id="AudioStreamWAV_0k6bx"]
+
+[node name="TitleScreen" type="Control" unique_id=70489254]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1408.0
+offset_bottom = 792.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_skoes")
+metadata/_edit_vertical_guides_ = [1281.0]
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=954704606]
+modulate = Color(0.41598046, 0.41598043, 0.4159804, 1)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_ux371")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=11744186]
+material = SubResource("ShaderMaterial_ux371")
+position = Vector2(1281, 601)
+texture = ExtResource("2_2e2ej")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=670419772]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -602.0
+offset_top = 481.0
+offset_right = -169.0
+offset_bottom = -323.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="NewGame" type="Button" parent="VBoxContainer" unique_id=1433728986 groups=["main_menu_buttons"]]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0, 0.6509804, 0.2627451, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.6509804, 0.2627451, 1)
+theme_override_colors/font_hover_color = Color(0, 0.6509804, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("4_2e2ej")
+theme_override_font_sizes/font_size = 26
+text = "NEW GAME"
+
+[node name="LoadGame" type="Button" parent="VBoxContainer" unique_id=842210898 groups=["main_menu_buttons"]]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0, 0.6509804, 0.2627451, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.6509804, 0.2627451, 1)
+theme_override_colors/font_hover_color = Color(0, 0.6509804, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("4_2e2ej")
+theme_override_font_sizes/font_size = 26
+text = "LOAD GAME"
+
+[node name="Options" type="Button" parent="VBoxContainer" unique_id=2006789985 groups=["main_menu_buttons"]]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0, 0.6509804, 0.2627451, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.6509804, 0.2627451, 1)
+theme_override_colors/font_hover_color = Color(0, 0.6509804, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("4_2e2ej")
+theme_override_font_sizes/font_size = 26
+text = "OPTIONS"
+
+[node name="Quit" type="Button" parent="VBoxContainer" unique_id=1441143416 groups=["main_menu_buttons"]]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0, 0.6509804, 0.2627451, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.6509804, 0.2627451, 1)
+theme_override_colors/font_hover_color = Color(0, 0.6509804, 0.2627451, 1)
+theme_override_fonts/font = ExtResource("4_2e2ej")
+theme_override_font_sizes/font_size = 26
+text = "QUIT"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=33930565]
+position = Vector2(1280, 720)
+zoom = Vector2(0.5, 0.5)
+
+[node name="ButtonSFX" type="AudioStreamPlayer" parent="." unique_id=1564532459]
+stream = SubResource("AudioStreamWAV_skoes")
+volume_db = -17.853
+pitch_scale = 1.3
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="." unique_id=2079672556]
+stream = SubResource("AudioStreamWAV_0k6bx")
+volume_db = -31.467

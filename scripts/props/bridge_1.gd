@@ -1,6 +1,8 @@
 extends Node2D
 class_name Bridge_1
 
+@onready var portal: LevelPortal = $"../Portal"
+
 @export var switch_1: Switch_1
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 var is_down: bool = true
@@ -8,6 +10,7 @@ var is_down: bool = true
 func _ready() -> void:
 	animation_player.play("up")
 	animation_player.seek(animation_player.current_animation_length, true)
+	portal.set_active(false)
 	is_down = false
 
 	if switch_1:
@@ -31,6 +34,7 @@ func raise_bridge() -> void:
 		return
 
 	animation_player.play("up")
+	portal.set_active(false)
 	is_down = false
 
 func lower_bridge() -> void:
@@ -38,6 +42,9 @@ func lower_bridge() -> void:
 		return
 	animation_player.play("down")
 	is_down = true
+	await animation_player.animation_finished
+	if is_down:
+		portal.set_active(true)
 
 func _on_switch_1_on() -> void:
 	lower_bridge()

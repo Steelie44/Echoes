@@ -6,9 +6,7 @@ class_name Bridge_2
 var is_down: bool = true
 
 func _ready() -> void:
-	animation_player.play("up")
-	animation_player.seek(animation_player.current_animation_length, true)
-	is_down = false
+	set_bridge_down()
 
 	if switch_1:
 		switch_1.switched_on.connect(_on_switch_1_on)
@@ -18,7 +16,7 @@ func _ready() -> void:
 		if switch_1.is_on:
 			raise_bridge()
 
-func set_bridge_down_immediately() -> void:
+func set_bridge_down() -> void:
 	animation_player.play("down")
 	animation_player.seek(
 		animation_player.current_animation_length,
@@ -40,7 +38,7 @@ func lower_bridge() -> void:
 	is_down = true
 
 func _on_switch_1_on() -> void:
-	lower_bridge()
+	raise_bridge()
 	
 func _on_switch_1_off() -> void:
-	raise_bridge()
+	lower_bridge()

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c55tgkss8eohe" path="res://assets/props/pressure_switch_on.png" id="1_0n0pk"]
 [ext_resource type="Texture2D" uid="uid://grkr60h5lf02" path="res://assets/props/pressure_switch_off.png" id="2_fgalv"]
-[ext_resource type="Script" uid="uid://sajjaqk7qcj2" path="res://scenes/props/detection_zone.gd" id="3_fgalv"]
+[ext_resource type="Script" uid="uid://sajjaqk7qcj2" path="res://scripts/props/detection_zone.gd" id="3_fgalv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sfe85"]
 size = Vector2(32, 7)

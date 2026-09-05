@@ -627,3 +627,22 @@ debug_color = Color(0.7423106, 0.4655066, 0, 0.41960785)
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1211331744]
 zoom = Vector2(1.01, 1.01)
 limit_smoothed = true
+
+[node name="UI" type="Node" parent="." unique_id=1237163972]
+
+[node name="Control" type="Control" parent="UI" unique_id=154725938]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Control" unique_id=2076045604]
+layout_mode = 1
+offset_left = -927.0
+offset_top = -513.99994
+offset_right = -926.0
+offset_bottom = -473.99994
+scale = Vector2(12.4000025, 1.4)
+
+[node name="TextureRect" type="TextureRect" parent="UI/Control/HBoxContainer" unique_id=331789410]
+layout_mode = 2

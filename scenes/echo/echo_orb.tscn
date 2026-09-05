@@ -1,3 +1,102 @@
 [gd_scene format=3 uid="uid://cckxl0h8cmcom"]
 
-[node name="EchoOrb" type="Node2D" unique_id=880542530]
+[ext_resource type="Texture2D" uid="uid://cy86dekgadusk" path="res://assets/props/echo_orb_anim.png" id="1_walph"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_walph"]
+atlas = ExtResource("1_walph")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atguf"]
+atlas = ExtResource("1_walph")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qxt2i"]
+atlas = ExtResource("1_walph")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u22wi"]
+atlas = ExtResource("1_walph")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gohms"]
+atlas = ExtResource("1_walph")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dn3p5"]
+atlas = ExtResource("1_walph")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cprns"]
+atlas = ExtResource("1_walph")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aut0k"]
+atlas = ExtResource("1_walph")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_11718"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_walph")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atguf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qxt2i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u22wi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gohms")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dn3p5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cprns")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aut0k")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8ugmv"]
+radius = 15.0
+
+[node name="EchoOrb" type="RigidBody2D" unique_id=2044423953]
+mass = 5.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1516434430]
+sprite_frames = SubResource("SpriteFrames_11718")
+animation = &"idle"
+frame_progress = 0.1294368
+
+[node name="PanelContainer" type="AspectRatioContainer" parent="AnimatedSprite2D" unique_id=1626644794]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="AnimatedSprite2D/PanelContainer" unique_id=568197705]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 0.44313726)
+theme_override_font_sizes/font_size = 6
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1687894623]
+visible = false
+shape = SubResource("CircleShape2D_8ugmv")
