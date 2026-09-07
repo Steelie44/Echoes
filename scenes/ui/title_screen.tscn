@@ -22,35 +22,53 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 1408.0
-offset_bottom = 792.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_skoes")
-metadata/_edit_vertical_guides_ = [1281.0]
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=954704606]
 modulate = Color(0.41598046, 0.41598043, 0.4159804, 1)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("1_ux371")
+expand_mode = 1
+stretch_mode = 6
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=11744186]
+[node name="Sprite2D" type="TextureRect" parent="." unique_id=11744186]
 material = SubResource("ShaderMaterial_ux371")
-position = Vector2(1281, 601)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -300.0
+offset_right = 400.0
+offset_bottom = -63.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("2_2e2ej")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=670419772]
 layout_mode = 1
-anchors_preset = 13
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -602.0
-offset_top = 481.0
-offset_right = -169.0
-offset_bottom = -323.0
+anchor_bottom = 0.5
+offset_left = -216.5
+offset_top = 40.0
+offset_right = 216.5
+offset_bottom = 300.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 15
@@ -95,10 +113,6 @@ theme_override_colors/font_hover_color = Color(0, 0.6509804, 0.2627451, 1)
 theme_override_fonts/font = ExtResource("4_2e2ej")
 theme_override_font_sizes/font_size = 26
 text = "QUIT"
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=33930565]
-position = Vector2(1280, 720)
-zoom = Vector2(0.5, 0.5)
 
 [node name="ButtonSFX" type="AudioStreamPlayer" parent="." unique_id=1564532459]
 stream = SubResource("AudioStreamWAV_skoes")

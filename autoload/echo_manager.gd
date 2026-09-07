@@ -1,7 +1,8 @@
 extends Node
 
 const PLAYER_SCENE := preload("res://scenes/player/player.tscn")
-const MAX_ECHOES := 3
+const STARTING_ECHOES := 3
+const MAX_ECHOES := 10
 const SLOT_EMPTY := 0
 const SLOT_ACTIVE := 1
 const SLOT_DIED := 2
@@ -11,6 +12,7 @@ signal out_of_echoes
 
 var recordings: Array[Array] = []
 var slot_states: Array[int] = [SLOT_EMPTY, SLOT_EMPTY, SLOT_EMPTY]
+var echo_capacity := STARTING_ECHOES
 var reload_pending := false
 
 
@@ -20,6 +22,10 @@ func can_create_echo() -> bool:
 
 func echoes_remaining() -> int:
 	return slot_states.count(SLOT_EMPTY)
+
+
+func is_last_echo() -> bool:
+	return echoes_remaining() == 1
 
 
 func activate_echo(recording: Array) -> void:
@@ -43,6 +49,21 @@ func lose_echo_to_damage() -> void:
 	slot_states[slot] = SLOT_DIED
 	resources_changed.emit(slot_states.duplicate())
 	_reload_level()
+
+
+func restart_level_fresh() -> void:
+	reset_echoes()
+	_reload_level()
+
+
+func complete_level() -> void:
+	echo_capacity = mini(echo_capacity + 1, MAX_ECHOES)
+	reset_echoes()
+
+
+func reset_progress() -> void:
+	echo_capacity = STARTING_ECHOES
+	reset_echoes()
 
 
 func _reload_level() -> void:
@@ -75,9 +96,6 @@ func _spawn_recorded_echoes(player: CharacterBody2D) -> void:
 		echo.configure_as_echo(recordings[index], index + 1)
 		echo_parent.add_child(echo)
 		echo.global_position = player.global_position
-
-		# All actors begin on the same marker. Prevent physics from pushing
-		# overlapping players/echoes into nearby level geometry.
 		echo.add_collision_exception_with(player)
 		player.add_collision_exception_with(echo)
 		for other_echo in spawned_echoes:
@@ -89,7 +107,9 @@ func _spawn_recorded_echoes(player: CharacterBody2D) -> void:
 
 func reset_echoes() -> void:
 	recordings.clear()
-	slot_states = [SLOT_EMPTY, SLOT_EMPTY, SLOT_EMPTY]
+	slot_states.clear()
+	slot_states.resize(echo_capacity)
+	slot_states.fill(SLOT_EMPTY)
 	reload_pending = false
 	resources_changed.emit(slot_states.duplicate())
 

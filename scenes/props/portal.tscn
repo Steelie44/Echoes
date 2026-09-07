@@ -2,7 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://ymq4b4fbbk1o" path="res://assets/props/teleport inactivated.png" id="1_p58te"]
 [ext_resource type="Texture2D" uid="uid://dsb3upplm5cfe" path="res://assets/props/teleport.png" id="2_121pt"]
-[ext_resource type="Script" path="res://scripts/props/portal.gd" id="3_portal"]
+[ext_resource type="Script" uid="uid://bjjaegird2x7s" path="res://scripts/props/portal.gd" id="3_portal"]
+[ext_resource type="AudioStream" uid="uid://djc3swgke2i5d" path="res://assets/audio/portal.wav" id="4_fwv1f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fwv1f"]
 atlas = ExtResource("1_p58te")
@@ -172,4 +173,8 @@ frame_progress = 1.0
 [node name="portal_area" type="Area2D" parent="." unique_id=1358969021]
 
 [node name="portal_area" type="CollisionShape2D" parent="portal_area" unique_id=1548014073]
+visible = false
 shape = SubResource("CircleShape2D_sfe85")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1192714694]
+stream = ExtResource("4_fwv1f")

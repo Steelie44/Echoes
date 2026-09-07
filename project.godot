@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.7", "Forward Plus")
 [autoload]
 
 EchoManager="*res://autoload/echo_manager.gd"
+GameManager="*res://autoload/game_manager.gd"
 
 [display]
 

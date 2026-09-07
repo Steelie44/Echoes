@@ -24,7 +24,7 @@ func set_switch_state(new_state: bool, emit_signal: bool = true) -> void:
 
 	if is_on:
 		switched_on.emit()
-		print("Switch 1 is ON")
+		print("Switch 2 is ON")
 	else:
 		switched_off.emit()
-		print("Switch 1 is OFF")
+		print("Switch 2 is OFF")

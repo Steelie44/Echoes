@@ -1,34 +1,45 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene format=3 uid="uid://b25op3kfvuqjc"]
 
-[ext_resource type="Script" path="res://scripts/ui/player_ui.gd" id="1_ui"]
+[ext_resource type="Script" uid="uid://d00kge2jaifgk" path="res://scripts/ui/player_ui.gd" id="1_ui"]
+[ext_resource type="Shader" uid="uid://ib7uo18p16gs" path="res://ui/titlescreen/title_glow.gdshader" id="2_2sf84"]
 
-[node name="PlayerUI" type="CanvasLayer"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sfe85"]
+shader = ExtResource("2_2sf84")
+shader_parameter/pulse_color = Color(1.8049032e-07, 0.4401627, 0.0126973735, 1)
+shader_parameter/pulse_speed = 1.0000000149012
+shader_parameter/min_brightness = 0.5
+shader_parameter/pulse_strength = 1.0000000149012
+
+[node name="PlayerUI" type="CanvasLayer" unique_id=1939855397]
 layer = 10
 script = ExtResource("1_ui")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=509263763]
 offset_left = 24.0
 offset_top = 24.0
 offset_right = 195.0
 offset_bottom = 81.0
 
-[node name="EchoSlots" type="HBoxContainer" parent="MarginContainer"]
+[node name="EchoSlots" type="HBoxContainer" parent="MarginContainer" unique_id=1000005125]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="Echo1" type="TextureRect" parent="MarginContainer/EchoSlots"]
+[node name="Echo1" type="TextureRect" parent="MarginContainer/EchoSlots" unique_id=1762877369]
+material = SubResource("ShaderMaterial_sfe85")
 custom_minimum_size = Vector2(49, 49)
 layout_mode = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Echo2" type="TextureRect" parent="MarginContainer/EchoSlots"]
+[node name="Echo2" type="TextureRect" parent="MarginContainer/EchoSlots" unique_id=1209738457]
+material = SubResource("ShaderMaterial_sfe85")
 custom_minimum_size = Vector2(49, 49)
 layout_mode = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Echo3" type="TextureRect" parent="MarginContainer/EchoSlots"]
+[node name="Echo3" type="TextureRect" parent="MarginContainer/EchoSlots" unique_id=46754123]
+material = SubResource("ShaderMaterial_sfe85")
 custom_minimum_size = Vector2(49, 49)
 layout_mode = 2
 expand_mode = 1

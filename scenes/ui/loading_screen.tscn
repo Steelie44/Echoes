@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bn0cwbhnqm3ex"]
+
+[ext_resource type="Texture2D" uid="uid://cbham11xs2tgj" path="res://assets/props/loading_screen.svg" id="1_rqdcv"]
+[ext_resource type="Script" uid="uid://boe5ad2d6vg23" path="res://scripts/ui/loading_screen.gd" id="2_loading"]
+
+[node name="LoadingScreen" type="Control" unique_id=1615784773]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_loading")
+
+[node name="TextureRect2" type="CanvasModulate" parent="." unique_id=1246099858]
+color = Color(0.3946136, 0.45328832, 0.40914634, 0.80784315)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1553349708]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_rqdcv")
+
+[node name="AspectRatioContainer" type="HBoxContainer" parent="." unique_id=248810367]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -46.5
+offset_top = -55.0
+offset_right = 46.5
+grow_horizontal = 2
+grow_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(40, -40)
+
+[node name="Label" type="Label" parent="AspectRatioContainer" unique_id=1017298188]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.078431375, 0.08235294, 0.078431375, 1)
+theme_override_font_sizes/font_size = 32
+text = "Hint:"
+horizontal_alignment = 1
+vertical_alignment = 2

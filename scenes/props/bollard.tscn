@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dcbvnbvhh18n7" path="res://assets/props/bollard.png" id="1_fm8yq"]
 [ext_resource type="Script" uid="uid://cttqaq4g8sm1e" path="res://scripts/props/bollard.gd" id="1_jxypr"]
+[ext_resource type="AudioStream" uid="uid://bv46aedkft0iw" path="res://assets/audio/bollard_slide.wav" id="3_0wo17"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jxypr"]
 atlas = ExtResource("1_fm8yq")
@@ -185,3 +186,6 @@ frame_progress = 1.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=932898798]
 visible = false
 shape = SubResource("RectangleShape2D_fm8yq")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=173297623]
+stream = ExtResource("3_0wo17")

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bidnob3o4lht" path="res://scripts/props/box_1.gd" id="1_bbg30"]
 [ext_resource type="Texture2D" uid="uid://ct1cdvhli7rrw" path="res://assets/props/box_1.png" id="1_xx8fl"]
+[ext_resource type="AudioStream" uid="uid://csdqmjudd4mlq" path="res://assets/audio/box_slide.wav" id="3_box_audio"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bbg30"]
 friction = 0.2
@@ -13,6 +14,8 @@ size = Vector2(63, 62)
 mass = 2.0
 physics_material_override = SubResource("PhysicsMaterial_bbg30")
 gravity_scale = 0.5
+contact_monitor = true
+max_contacts_reported = 4
 linear_damp = 1.0
 script = ExtResource("1_bbg30")
 
@@ -25,3 +28,7 @@ visible = false
 position = Vector2(0.5, 0)
 scale = Vector2(0.9, 0.9)
 shape = SubResource("RectangleShape2D_v7u6g")
+
+[node name="SlideAudio" type="AudioStreamPlayer" parent="." unique_id=137342999]
+stream = ExtResource("3_box_audio")
+volume_db = 0.288

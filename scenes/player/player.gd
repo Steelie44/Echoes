@@ -4,6 +4,9 @@ extends CharacterBody2D
 @export var run_speed: float = 350.0
 @export var jump_velocity: float = -400.0
 @export var push_force: float = 100.0
+@export var footstep_interval: float = 0.2
+@export var health: float = 100.0
+var footstep_timer: float = 0.0
 
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 var facing_direction := "r"
@@ -16,7 +19,10 @@ var activating_echo := false
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var camera: Camera2D = $Camera2D
-
+@onready var audio_player: AudioStreamPlayer = $Footsteps
+@onready var jump: AudioStreamPlayer = $Jump
+@onready var death: AudioStreamPlayer = $Death
+@onready var hurt: AudioStreamPlayer = $Hurt
 
 func configure_as_echo(frames: Array, number: int) -> void:
 	playback_mode = true
@@ -27,14 +33,22 @@ func configure_as_echo(frames: Array, number: int) -> void:
 
 
 func _ready() -> void:
+	
 	if playback_mode:
 		camera.enabled = false
 		animated_sprite.modulate = Color(0.35, 0.8, 1.0, 0.65)
 	else:
 		EchoManager.register_live_player(self)
 
-
 func _physics_process(delta: float) -> void:
+	if footstep_timer > 0.0:
+		footstep_timer -= delta
+	if velocity.length() > 0.1 and is_on_floor():
+		play_footsteps()
+	
+	if Input.is_action_just_pressed("jump"):
+		jump.play()
+		
 	if activating_echo:
 		return
 
@@ -46,8 +60,12 @@ func _physics_process(delta: float) -> void:
 	_apply_input_frame(input_frame, delta)
 	if not playback_mode:
 		recorded_frames.append(input_frame)
-
-
+		
+func play_footsteps():
+	if footstep_timer <= 0.0:
+		audio_player.play()
+		footstep_timer = footstep_interval
+		
 func _get_input_frame() -> Dictionary:
 	if playback_mode:
 		if playback_index >= playback_frames.size():
@@ -82,18 +100,22 @@ func _apply_input_frame(input_frame: Dictionary, delta: float) -> void:
 
 	update_animations(direction, is_running)
 	move_and_slide()
-	_push_bodies()
+	_push_bodies(direction)
 
 	if input_frame.get("interact", false):
 		trigger_interaction()
 
-
-func _push_bodies() -> void:
+func _push_bodies(move_direction: float) -> void:
 	for index in get_slide_collision_count():
 		var collision := get_slide_collision(index)
 		var body := collision.get_collider()
 		if body and body.is_in_group("Pushable"):
-			body.apply_central_force(-collision.get_normal() * push_force)
+			var collision_normal := collision.get_normal()
+			var is_side_push := absf(collision_normal.x) > 0.5 and absf(move_direction) > 0.1
+			if is_side_push:
+				body.apply_central_force(-collision_normal * push_force)
+				if body.has_method("notify_pushed"):
+					body.notify_pushed()
 
 
 func update_animations(direction: float, is_running: bool) -> void:
@@ -138,14 +160,22 @@ func _start_echo_activation() -> void:
 	velocity = Vector2.ZERO
 	animated_sprite.play("dead_" + facing_direction)
 	await get_tree().create_timer(0.35).timeout
+	if EchoManager.is_last_echo():
+		EchoManager.restart_level_fresh()
+		return
 	EchoManager.activate_echo(recorded_frames)
 
 
-func take_damage(_amount: float = 1.0) -> void:
+func take_damage(amount: float = 1.0) -> void:
 	if playback_mode or activating_echo:
 		return
-	die_from_damage()
-
+	health -= amount
+	hurt.play()
+	if health <= 0.0:
+		die_from_damage()
+		
+func laser_hit(damage: float) -> void:
+	take_damage(damage)
 
 func die_from_damage() -> void:
 	activating_echo = true
@@ -155,3 +185,4 @@ func die_from_damage() -> void:
 	animated_sprite.play("dead_" + facing_direction)
 	await get_tree().create_timer(0.35).timeout
 	EchoManager.lose_echo_to_damage()
+	death.play()

@@ -43,9 +43,9 @@ func play_click_sound() -> void:
 func _on_new_game_pressed() -> void:
 	play_click_sound()
 	new_game_button.disabled = true
-	EchoManager.reset_echoes()
+	EchoManager.reset_progress()
 	await get_tree().create_timer(0.15).timeout
-	get_tree().change_scene_to_file(LEVEL_ONE)
+	GameManager.load_scene_with_hint(LEVEL_ONE)
 
 
 func _on_quit_pressed() -> void:

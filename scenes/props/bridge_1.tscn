@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d2klol2wakco7" path="res://scripts/props/bridge_1.gd" id="1_glogu"]
 [ext_resource type="Texture2D" uid="uid://cgjfle388ts7s" path="res://assets/props/bridge_down_left.png" id="1_xx2xx"]
+[ext_resource type="AudioStream" uid="uid://bgim8lcupxcd2" path="res://assets/audio/bridge.wav" id="3_v218d"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_xx2xx"]
 points = PackedVector2Array(-159, 0, -159, -16, 0, -16, 0, 0)
@@ -278,3 +279,6 @@ shape = SubResource("ConvexPolygonShape2D_xx2xx")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1814440338]
 root_node = NodePath("../AnimatableBody2D")
 libraries/ = SubResource("AnimationLibrary_rmhdm")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=48984338]
+stream = ExtResource("3_v218d")
