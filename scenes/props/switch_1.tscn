@@ -10,6 +10,18 @@ size = Vector2(28, 32)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_11718"]
 size = Vector2(81, 32)
 
+[sub_resource type="Gradient" id="Gradient_71jaa"]
+offsets = PackedFloat32Array(0, 0.6391437)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0vuen"]
+gradient = SubResource("Gradient_71jaa")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_71jaa"]
+polygon = PackedVector2Array(10, -16, 10, -12, 12, -12, 12, -2, 16, -2, 16, 16, -15, 16, -15, 8, -16, 8, -16, -2, -13, -2, -13, -12, -10, -12, -10, -16)
+
 [node name="Switch_1" type="Area2D" unique_id=1540902422 groups=["Interactable"]]
 script = ExtResource("1_71jaa")
 
@@ -30,3 +42,10 @@ visible = false
 position = Vector2(1.5, 0)
 shape = SubResource("RectangleShape2D_11718")
 debug_color = Color(0.77884656, 0.4386388, 0, 0.41960785)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=958009022]
+energy = 2.0
+texture = SubResource("GradientTexture2D_0vuen")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=797970027]
+occluder = SubResource("OccluderPolygon2D_71jaa")

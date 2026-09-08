@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://so0tuwt5r0i1"]
+
+[ext_resource type="Texture2D" uid="uid://ba5ulbqw3hafd" path="res://assets/player/spritesheets/walk_left.png" id="1_fs5mo"]
+
+[resource]
+atlas = ExtResource("1_fs5mo")
+region = Rect2(-0.14913177, 0, 135.41812, 128)

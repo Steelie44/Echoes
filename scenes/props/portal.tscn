@@ -161,6 +161,15 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_sfe85"]
 radius = 31.0
 
+[sub_resource type="Gradient" id="Gradient_y1lab"]
+offsets = PackedFloat32Array(0, 0.6391437)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fwv1f"]
+gradient = SubResource("Gradient_y1lab")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="Portal" type="Node2D" unique_id=363754059]
 script = ExtResource("3_portal")
 
@@ -178,3 +187,9 @@ shape = SubResource("CircleShape2D_sfe85")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1192714694]
 stream = ExtResource("4_fwv1f")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=346020609]
+position = Vector2(9.536743e-07, -5.5)
+scale = Vector2(1.8125001, 1.296875)
+energy = 3.0
+texture = SubResource("GradientTexture2D_fwv1f")

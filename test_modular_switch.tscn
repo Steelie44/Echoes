@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://d4inxjm1gulpj"]
+
+[ext_resource type="Script" uid="uid://6rsvd24ijr0g" path="res://test_modular_switch.gd" id="1_120f4"]
+
+[node name="TestModularSwitch" type="Node" unique_id=976670376]
+script = ExtResource("1_120f4")

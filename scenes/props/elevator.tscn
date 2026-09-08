@@ -265,6 +265,15 @@ _data = {
 &"up": SubResource("Animation_fg7fk")
 }
 
+[sub_resource type="Gradient" id="Gradient_42fv0"]
+offsets = PackedFloat32Array(0, 0.9357798)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sfe85"]
+gradient = SubResource("Gradient_42fv0")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+
 [node name="Elevator" type="Node2D" unique_id=1744680358]
 script = ExtResource("1_fg7fk")
 
@@ -274,7 +283,6 @@ script = ExtResource("1_fg7fk")
 texture = ExtResource("1_ldody")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D" unique_id=813221911]
-visible = false
 position = Vector2(0, -3.5)
 shape = SubResource("RectangleShape2D_sfe85")
 
@@ -283,4 +291,10 @@ libraries/ = SubResource("AnimationLibrary_42fv0")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=706021342]
 stream = ExtResource("3_42fv0")
-volume_db = -10.0
+volume_db = -12.0
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=2009374081]
+position = Vector2(0, -4)
+scale = Vector2(1.4799997, 0.16000041)
+energy = 3.0
+texture = SubResource("GradientTexture2D_sfe85")

@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://dn1xyhxho228w"]
+
+[ext_resource type="Texture2D" uid="uid://dsb3upplm5cfe" path="res://assets/props/teleport.png" id="1_svssu"]
+
+[resource]
+atlas = ExtResource("1_svssu")
+region = Rect2(0, 0, 64, 64)

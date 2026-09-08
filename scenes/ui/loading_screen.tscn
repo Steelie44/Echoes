@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bn0cwbhnqm3ex"]
 
-[ext_resource type="Texture2D" uid="uid://cbham11xs2tgj" path="res://assets/props/loading_screen.svg" id="1_rqdcv"]
 [ext_resource type="Script" uid="uid://boe5ad2d6vg23" path="res://scripts/ui/loading_screen.gd" id="2_loading"]
+[ext_resource type="Texture2D" uid="uid://fpwbrml2rf43" path="res://assets/ui/transition_screen.png" id="2_q4fso"]
 
 [node name="LoadingScreen" type="Control" unique_id=1615784773]
 layout_mode = 3
@@ -19,7 +19,7 @@ color = Color(0.3946136, 0.45328832, 0.40914634, 0.80784315)
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
-texture = ExtResource("1_rqdcv")
+texture = ExtResource("2_q4fso")
 
 [node name="AspectRatioContainer" type="HBoxContainer" parent="." unique_id=248810367]
 layout_mode = 1
@@ -38,8 +38,21 @@ offset_transform_position = Vector2(40, -40)
 
 [node name="Label" type="Label" parent="AspectRatioContainer" unique_id=1017298188]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.078431375, 0.08235294, 0.078431375, 1)
+theme_override_colors/font_color = Color(0.68656266, 0.7274029, 0.71695423, 1)
 theme_override_font_sizes/font_size = 32
 text = "Hint:"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="ChamberNumber" type="RichTextLabel" parent="." unique_id=2089279015]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 0
+offset_left = 732.0
+offset_top = 365.0
+offset_right = 1232.0
+offset_bottom = 465.0
+theme_override_font_sizes/normal_font_size = 50
+text = "CHAMBER - 02
+"
 horizontal_alignment = 1
 vertical_alignment = 2

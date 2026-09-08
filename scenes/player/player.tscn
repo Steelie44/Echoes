@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://b7gr61p5f2p0g" path="res://assets/audio/player/foley_footstep_concrete_2.wav" id="13_gx1jg"]
 [ext_resource type="AudioStream" uid="uid://bs6themjfqb2v" path="res://assets/audio/player/jump.wav" id="14_ugbui"]
 [ext_resource type="AudioStream" uid="uid://clt8afcso1x6p" path="res://assets/audio/player/death.wav" id="15_fcs02"]
+[ext_resource type="AudioStream" uid="uid://cq6m7m0i1p2im" path="res://assets/audio/player/Fart_5.wav" id="16_myrg7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yj68g"]
 atlas = ExtResource("1_je7p5")
@@ -628,7 +629,7 @@ shape = SubResource("CircleShape2D_11718")
 debug_color = Color(0.7423106, 0.4655066, 0, 0.41960785)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1211331744]
-zoom = Vector2(2, 2)
+zoom = Vector2(1.8, 1.8)
 limit_smoothed = true
 
 [node name="UI" type="Node" parent="." unique_id=1237163972]
@@ -660,8 +661,12 @@ volume_db = -33.86
 
 [node name="Death" type="AudioStreamPlayer" parent="." unique_id=69953327]
 stream = ExtResource("15_fcs02")
-volume_db = -33.86
+volume_db = 5.274
 
 [node name="Hurt" type="AudioStreamPlayer" parent="." unique_id=424394649]
 stream = ExtResource("15_fcs02")
-volume_db = -33.86
+volume_db = -12.417
+
+[node name="CreateEcho" type="AudioStreamPlayer" parent="." unique_id=1934359203]
+stream = ExtResource("16_myrg7")
+volume_db = -16.17

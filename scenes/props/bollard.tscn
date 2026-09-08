@@ -172,7 +172,16 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fm8yq"]
-size = Vector2(32, 64)
+size = Vector2(30, 63)
+
+[sub_resource type="Gradient" id="Gradient_0wo17"]
+offsets = PackedFloat32Array(0, 0.93883795)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sfe85"]
+gradient = SubResource("Gradient_0wo17")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
 
 [node name="Bollard" type="RigidBody2D" unique_id=1728375164]
 script = ExtResource("1_jxypr")
@@ -184,8 +193,12 @@ frame = 10
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=932898798]
-visible = false
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_fm8yq")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=173297623]
 stream = ExtResource("3_0wo17")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=576436923]
+energy = 3.0
+texture = SubResource("GradientTexture2D_sfe85")

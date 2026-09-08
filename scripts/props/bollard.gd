@@ -7,12 +7,16 @@ const BOLLARD_SLIDE: AudioStream = preload("uid://bv46aedkft0iw")
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @export var pplate: PPlate
+@export var portal: LevelPortal
 var is_up = true
 
 func _ready():
 	audio_player.stream = BOLLARD_SLIDE
-	pplate.plate_pressed.connect(_on_plate_pressed)
-	pplate.plate_released.connect(_on_plate_released)
+	if portal:
+		portal.set_active(false)
+	if pplate:
+		pplate.plate_pressed.connect(_on_plate_pressed)
+		pplate.plate_released.connect(_on_plate_released)
 
 func _physics_process(delta: float) -> void:
 	pass
@@ -33,9 +37,13 @@ func raise_bollard() -> void:
 	
 func _on_plate_pressed() -> void:
 	lower_bollard()
+	if portal:
+		portal.set_active(true)
 
 func _on_plate_released() -> void:
 	raise_bollard()
+	if portal:
+		portal.set_active(false)
 
 	
 	

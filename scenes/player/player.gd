@@ -23,6 +23,7 @@ var activating_echo := false
 @onready var jump: AudioStreamPlayer = $Jump
 @onready var death: AudioStreamPlayer = $Death
 @onready var hurt: AudioStreamPlayer = $Hurt
+@onready var create_echo: AudioStreamPlayer = $CreateEcho
 
 func configure_as_echo(frames: Array, number: int) -> void:
 	playback_mode = true
@@ -149,7 +150,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 	if event.is_action_pressed("activate_echo"):
 		_start_echo_activation()
-
+		create_echo.play()
 
 func _start_echo_activation() -> void:
 	if not EchoManager.can_create_echo():

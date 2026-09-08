@@ -14,19 +14,16 @@ var recordings: Array[Array] = []
 var slot_states: Array[int] = [SLOT_EMPTY, SLOT_EMPTY, SLOT_EMPTY]
 var echo_capacity := STARTING_ECHOES
 var reload_pending := false
-
+var music_resume_position := -1.0
 
 func can_create_echo() -> bool:
 	return _next_empty_slot() != -1
 
-
 func echoes_remaining() -> int:
 	return slot_states.count(SLOT_EMPTY)
 
-
 func is_last_echo() -> bool:
 	return echoes_remaining() == 1
-
 
 func activate_echo(recording: Array) -> void:
 	var slot := _next_empty_slot()
@@ -36,40 +33,61 @@ func activate_echo(recording: Array) -> void:
 	slot_states[slot] = SLOT_ACTIVE
 	recordings.append(recording.duplicate(true))
 	resources_changed.emit(slot_states.duplicate())
-	_reload_level()
-
+	_reload_level(true)
 
 func lose_echo_to_damage() -> void:
-	var slot := _next_empty_slot()
-	if slot == -1:
-		out_of_echoes.emit()
-		print("Game over: no echo resources remaining")
+	if is_last_echo():
+		restart_level_fresh()
 		return
 
+	var slot := _next_empty_slot()
+	if slot == -1:
+		restart_level_fresh()
+		return
 	slot_states[slot] = SLOT_DIED
 	resources_changed.emit(slot_states.duplicate())
 	_reload_level()
-
 
 func restart_level_fresh() -> void:
 	reset_echoes()
 	_reload_level()
 
-
 func complete_level() -> void:
 	echo_capacity = mini(echo_capacity + 1, MAX_ECHOES)
 	reset_echoes()
+
+func ensure_capacity_for_chamber(chamber_number: int) -> void:
+	var required_capacity := clampi(STARTING_ECHOES + chamber_number - 1, STARTING_ECHOES, MAX_ECHOES)
+	if echo_capacity >= required_capacity:
+		return
+	echo_capacity = required_capacity
+	var previous_size := slot_states.size()
+	slot_states.resize(echo_capacity)
+	for index in range(previous_size, slot_states.size()):
+		slot_states[index] = SLOT_EMPTY
+	resources_changed.emit(slot_states.duplicate())
 
 
 func reset_progress() -> void:
 	echo_capacity = STARTING_ECHOES
 	reset_echoes()
 
+func _reload_level(continue_music: bool = false) -> void:
+	music_resume_position = -1.0
+	if continue_music:
+		var music := get_tree().current_scene.get_node_or_null("AudioStreamPlayer") as AudioStreamPlayer
+		if music and music.playing:
+			music_resume_position = music.get_playback_position()
 
-func _reload_level() -> void:
 	reload_pending = true
 	get_tree().reload_current_scene()
 
+func play_level_music(music: AudioStreamPlayer) -> void:
+	if music_resume_position >= 0.0:
+		music.play(music_resume_position)
+		music_resume_position = -1.0
+	else:
+		music.play()
 
 func register_live_player(player: CharacterBody2D) -> void:
 	var spawn_position := get_tree().current_scene.get_node_or_null("SpawnPosition")
@@ -80,7 +98,6 @@ func register_live_player(player: CharacterBody2D) -> void:
 
 	if not reload_pending:
 		return
-
 	reload_pending = false
 	call_deferred("_spawn_recorded_echoes", player)
 
@@ -88,7 +105,6 @@ func register_live_player(player: CharacterBody2D) -> void:
 func _spawn_recorded_echoes(player: CharacterBody2D) -> void:
 	if not is_instance_valid(player):
 		return
-
 	var echo_parent := player.get_parent()
 	var spawned_echoes: Array[CharacterBody2D] = []
 	for index in recordings.size():
@@ -104,7 +120,6 @@ func _spawn_recorded_echoes(player: CharacterBody2D) -> void:
 
 		spawned_echoes.append(echo)
 
-
 func reset_echoes() -> void:
 	recordings.clear()
 	slot_states.clear()
@@ -112,7 +127,6 @@ func reset_echoes() -> void:
 	slot_states.fill(SLOT_EMPTY)
 	reload_pending = false
 	resources_changed.emit(slot_states.duplicate())
-
 
 func _next_empty_slot() -> int:
 	for index in slot_states.size():

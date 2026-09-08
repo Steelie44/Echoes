@@ -94,7 +94,7 @@ theme_override_fonts/font = ExtResource("4_2e2ej")
 theme_override_font_sizes/font_size = 26
 text = "LOAD GAME"
 
-[node name="Options" type="Button" parent="VBoxContainer" unique_id=2006789985 groups=["main_menu_buttons"]]
+[node name="Credits" type="Button" parent="VBoxContainer" unique_id=2006789985 groups=["main_menu_buttons"]]
 modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
 layout_mode = 2
 theme_override_colors/font_focus_color = Color(0, 0.6509804, 0.2627451, 1)
@@ -102,7 +102,7 @@ theme_override_colors/font_pressed_color = Color(0, 0.6509804, 0.2627451, 1)
 theme_override_colors/font_hover_color = Color(0, 0.6509804, 0.2627451, 1)
 theme_override_fonts/font = ExtResource("4_2e2ej")
 theme_override_font_sizes/font_size = 26
-text = "OPTIONS"
+text = "CREDITS"
 
 [node name="Quit" type="Button" parent="VBoxContainer" unique_id=1441143416 groups=["main_menu_buttons"]]
 modulate = Color(0.581033, 0.58103293, 0.5810329, 1)

@@ -4,7 +4,7 @@ const EMPTY_TEXTURE := preload("res://assets/ui/echo_resource_empty.tres")
 const ACTIVE_TEXTURE := preload("res://assets/ui/echo_resource_active.tres")
 const DIED_TEXTURE := preload("res://assets/ui/echo_resource_died.tres")
 
-@onready var slot_container: HBoxContainer = $MarginContainer/EchoSlots
+@onready var slot_container: HBoxContainer = $ControlsOverlay/EchoSlots
 
 var slots: Array[TextureRect] = []
 

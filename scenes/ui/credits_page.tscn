@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://dhjw0wvkhove5"]
+
+[ext_resource type="Texture2D" uid="uid://b6qyvygaee5ac" path="res://assets/ui/credits_page.png" id="1_2r7ft"]
+[ext_resource type="Script" uid="uid://pkedjl1nhqya" path="res://scripts/ui/credits_page.gd" id="1_vobdo"]
+[ext_resource type="AudioStream" uid="uid://726hdfgbf7ee" path="res://assets/audio/ui_button.wav" id="3_ri7n1"]
+
+[node name="CreditsPage" type="Node2D" unique_id=95790159]
+script = ExtResource("1_vobdo")
+metadata/_edit_vertical_guides_ = [964.0]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1893938161]
+position = Vector2(960, 540)
+texture = ExtResource("1_2r7ft")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=2134561178]
+offset_left = 806.0
+offset_top = 557.0
+offset_right = 1162.0
+offset_bottom = 873.0
+theme_override_colors/default_color = Color(0.5529412, 0.5529412, 0.5529412, 1)
+theme_override_font_sizes/normal_font_size = 22
+text = "Character Art By - Craftpix.net
+
+Tileset Art By - Szadi Art
+
+Music By - Tobias Voigt - Neozoic
+
+SFX By - Chequered Ink
+"
+
+[node name="Button" type="Button" parent="." unique_id=547060030]
+offset_left = 102.0
+offset_top = 999.0
+offset_right = 335.0
+offset_bottom = 1059.0
+theme_override_colors/font_color = Color(0.5529412, 0.5529412, 0.5529412, 1)
+theme_override_colors/font_focus_color = Color(0.5529412, 0.5529412, 0.5529412, 1)
+theme_override_colors/font_pressed_color = Color(0.74095213, 0.74095213, 0.74095213, 1)
+theme_override_font_sizes/font_size = 20
+text = "Back
+"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1431299428]
+stream = ExtResource("3_ri7n1")
+volume_db = -29.56
